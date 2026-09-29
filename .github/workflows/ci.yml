@@ -8,6 +8,7 @@ on:
 
 jobs:
   test:
+    name: Test
     runs-on: macos-latest # Homebrew tests run best on macOS (or linux if your tools are purely linux)
     steps:
       - name: Checkout repository
