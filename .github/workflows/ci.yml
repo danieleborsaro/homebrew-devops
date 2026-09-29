@@ -11,10 +11,10 @@ jobs:
     runs-on: macos-latest # Homebrew tests run best on macOS (or linux if your tools are purely linux)
     steps:
       - name: Set up Homebrew
-        uses: Homebrew/actions/setup-homebrew@master
+        uses: Homebrew/actions/setup-homebrew@2026.09.28.1
 
       - name: Run Brew Test Bot
-        uses: Homebrew/actions/git-try-merging@master # Optional, or just run audit
+        uses: Homebrew/actions/git-try-merging@2026.09.28.1 # Optional, or just run audit
       
       - run: brew audit --strict --online Formula/*.rb
         if: hashFiles('Formula/*.rb') != ''
