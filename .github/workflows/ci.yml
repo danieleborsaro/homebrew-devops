@@ -1,0 +1,20 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: macos-latest # Homebrew tests run best on macOS (or linux if your tools are purely linux)
+    steps:
+      - name: Set up Homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Run Brew Test Bot
+        uses: Homebrew/actions/git-try-merging@master # Optional, or just run audit
+      
+      - run: brew audit --strict --online Formula/*.rb
+        if: hashFiles('Formula/*.rb') != ''
