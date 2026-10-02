@@ -13,7 +13,7 @@ brew tap danieleborsaro/devops
 Once tapped, you can install individual tools normally:
 
 ```bash
-brew install danieleborsaro/devops/yago
+brew install yago
 ```
 
 Alternatively, you can install directly via URL without tapping first:
@@ -23,6 +23,12 @@ brew install danieleborsaro/devops/yago
 ```
 
 ## Available Formulae
+
+List available formula for tap:
+
+```bash
+brew tap-info danieleborsaro/devops
+```
 
 | Formula | Description |
 | --- | --- |
