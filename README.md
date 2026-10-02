@@ -13,7 +13,7 @@ brew tap danieleborsaro/devops
 Optionally trust the tap:
 
 ```bash
-brew trust danieleborsaro/gitops
+brew trust danieleborsaro/devops
 ```
 
 Once tapped, you can install individual tools normally:
@@ -31,7 +31,7 @@ brew install danieleborsaro/devops/yago
 Optionally trust the ndividual formula:
 
 ```bash
-brew trust --formula danieleborsaro/gitops/yago
+brew trust --formula danieleborsaro/devops/yago
 ```
 
 ## Available Formulae
