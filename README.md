@@ -10,6 +10,12 @@ You can tap this repository to install any of the available tools:
 brew tap danieleborsaro/devops
 ```
 
+Optionally trust the tap:
+
+```bash
+brew trust danieleborsaro/gitops
+```
+
 Once tapped, you can install individual tools normally:
 
 ```bash
@@ -20,6 +26,12 @@ Alternatively, you can install directly via URL without tapping first:
 
 ```bash
 brew install danieleborsaro/devops/yago
+```
+
+Optionally trust the ndividual formula:
+
+```bash
+brew trust --formula danieleborsaro/gitops/yago
 ```
 
 ## Available Formulae
