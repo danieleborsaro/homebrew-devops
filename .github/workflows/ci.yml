@@ -21,6 +21,11 @@ jobs:
         run: |
           # Only run if there are formula files present
           if ls Formula/*.rb 1> /dev/null 2>&1; then
-            brew audit --strict --online Formula/*.rb
+            formula_names=()
+            for formula in Formula/*.rb; do
+              formula_name="${formula##*/}"
+              formula_names+=("${formula_name%.rb}")
+            done
+            brew audit --strict --online "${formula_names[@]}"
             brew style Formula/*.rb
           fi
