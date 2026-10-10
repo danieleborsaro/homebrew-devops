@@ -5,21 +5,21 @@
 class Yago < Formula
   desc "Yago is a GitOps tool for non-kubernetes platforms"
   homepage "https://github.com/danieleborsaro/homebrew-devops"
-  version "0.2.3"
+  version "0.3.0"
   license "Apache-2.0"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/danieleborsaro/yago/releases/download/v0.2.3/yago_0.2.3_Darwin_x86_64.tar.gz"
-      sha256 "441b0f73005fe96953d503dc0cd53efcb69b5254cc217c1a0bc353992b57c332"
+      url "https://github.com/danieleborsaro/yago/releases/download/v0.3.0/yago_0.3.0_Darwin_x86_64.tar.gz"
+      sha256 "450275a73adaad674ce8fea69c01e642abe409c33b43ae7d6db4ff509dfba4b2"
 
       define_method(:install) do
         bin.install "yago"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/danieleborsaro/yago/releases/download/v0.2.3/yago_0.2.3_Darwin_arm64.tar.gz"
-      sha256 "0d061495444fb033607f2ce7c5801a14e66c5574cc285870b677e69e006946ca"
+      url "https://github.com/danieleborsaro/yago/releases/download/v0.3.0/yago_0.3.0_Darwin_arm64.tar.gz"
+      sha256 "198ee838e74d5c84a2ab1a69bbd08c819f195669809f5080f62747712307f242"
 
       define_method(:install) do
         bin.install "yago"
@@ -29,15 +29,15 @@ class Yago < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/danieleborsaro/yago/releases/download/v0.2.3/yago_0.2.3_Linux_x86_64.tar.gz"
-      sha256 "ef7b1c1935a8e070f46364f905c761837f230759bdd8827db8cb50b081dd8e98"
+      url "https://github.com/danieleborsaro/yago/releases/download/v0.3.0/yago_0.3.0_Linux_x86_64.tar.gz"
+      sha256 "5883f2ae02b0a7e4071fe17f1ffbefef3d758678abe9e774783731d504994f8f"
       define_method(:install) do
         bin.install "yago"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/danieleborsaro/yago/releases/download/v0.2.3/yago_0.2.3_Linux_arm64.tar.gz"
-      sha256 "6f4395ebc6bf16ccf5c3caf82a9d2362730b868d23a34463590e131f87d9f56c"
+      url "https://github.com/danieleborsaro/yago/releases/download/v0.3.0/yago_0.3.0_Linux_arm64.tar.gz"
+      sha256 "805a4e479495c4b3ed3916f63328aafc9906b5f08ec1574a3b151d2e2694542a"
       define_method(:install) do
         bin.install "yago"
       end
