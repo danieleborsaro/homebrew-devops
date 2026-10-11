@@ -43,4 +43,8 @@ class Yago < Formula
       end
     end
   end
+
+  test do
+    assert_path_exists bin/"yago"
+  end
 end
