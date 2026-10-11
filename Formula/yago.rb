@@ -5,7 +5,6 @@
 class Yago < Formula
   desc "GitOps tool for non-kubernetes platforms"
   homepage "https://github.com/danieleborsaro/homebrew-devops"
-  version "0.4.0"
   license "Apache-2.0"
 
   on_macos do
