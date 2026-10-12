@@ -7,6 +7,8 @@ class YagoAT041 < Formula
   homepage "https://github.com/danieleborsaro/homebrew-devops"
   license "Apache-2.0"
 
+  keg_only :versioned_formula
+
   on_macos do
     if Hardware::CPU.intel?
       url "https://github.com/danieleborsaro/yago/releases/download/v0.4.1/yago_0.4.1_Darwin_x86_64.tar.gz"
@@ -42,8 +44,6 @@ class YagoAT041 < Formula
       end
     end
   end
-
-  conflicts_with "yago"
 
   test do
     assert_path_exists bin/"yago"
