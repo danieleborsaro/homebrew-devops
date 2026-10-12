@@ -43,7 +43,7 @@ class YagoAT041 < Formula
     end
   end
 
-  conflicts_with "yago"
+  keg_only :versioned_formula
 
   test do
     assert_path_exists bin/"yago"
