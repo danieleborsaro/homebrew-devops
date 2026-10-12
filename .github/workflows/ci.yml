@@ -13,19 +13,38 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        
+        with:
+          fetch-depth: 0
+
       - name: Set up Homebrew
         uses: Homebrew/actions/setup-homebrew@2026.09.28.1
         
       - name: Run Brew Audit & Style Checks
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
         run: |
-          # Only run if there are formula files present
-          if ls Formula/*.rb 1> /dev/null 2>&1; then
-            brew style Formula/*.rb
-            formula_names=()
-            for formula in Formula/*.rb; do
-              formula_name="${formula##*/}"
-              formula_names+=("${formula_name%.rb}")
-            done
-            brew audit --strict --online "${formula_names[@]}"
+          # Only check formulae added or modified (not deleted) since the base commit
+          if [ -z "$BASE_SHA" ] || [ "$BASE_SHA" = "0000000000000000000000000000000000000000" ]; then
+            changed="$(ls Formula/*.rb 2>/dev/null || true)"
+          else
+            changed="$(git diff --name-only --diff-filter=d "$BASE_SHA" HEAD -- 'Formula/*.rb')"
           fi
+
+          if [ -z "$changed" ]; then
+            echo "No formula changes to check."
+            exit 0
+          fi
+
+          echo "Checking:"
+          echo "$changed"
+
+          formula_files=()
+          formula_names=()
+          while IFS= read -r formula; do
+            formula_files+=("$formula")
+            formula_name="${formula##*/}"
+            formula_names+=("${formula_name%.rb}")
+          done <<< "$changed"
+
+          brew style "${formula_files[@]}"
+          brew audit --strict --online "${formula_names[@]}"
