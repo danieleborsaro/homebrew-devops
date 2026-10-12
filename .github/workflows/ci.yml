@@ -24,11 +24,12 @@ jobs:
           BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
         run: |
           # Only check formulae added or modified (not deleted) since the base commit
-          if [ -z "$BASE_SHA" ] || [ "$BASE_SHA" = "0000000000000000000000000000000000000000" ]; then
-            changed="$(ls Formula/*.rb 2>/dev/null || true)"
-          else
-            changed="$(git diff --name-only --diff-filter=d "$BASE_SHA" HEAD -- 'Formula/*.rb')"
+          # Pushes to main use the pre-push commit; if it is missing (new branch,
+          # force push), fall back to the parent commit, then to the empty tree.
+          if [ -z "$BASE_SHA" ] || ! git cat-file -e "${BASE_SHA}^{commit}" 2>/dev/null; then
+            BASE_SHA="$(git rev-parse --verify -q HEAD^ || git hash-object -t tree /dev/null)"
           fi
+          changed="$(git diff --name-only --diff-filter=d "$BASE_SHA" HEAD -- 'Formula/*.rb')"
 
           if [ -z "$changed" ]; then
             echo "No formula changes to check."
