@@ -9,16 +9,16 @@ class Yago < Formula
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/danieleborsaro/yago/releases/download/v0.4.0/yago_0.4.0_Darwin_x86_64.tar.gz"
-      sha256 "1054079720b2ae5215fbf8343a09bf919601e345acc71e9fa335dde942db48a2"
+      url "https://github.com/danieleborsaro/yago/releases/download/v0.4.1/yago_0.4.1_Darwin_x86_64.tar.gz"
+      sha256 "ed0e57679bd98df2994bd6fa5cda5d696f8347fe721dba2408d0792713dab670"
 
       define_method(:install) do
         bin.install "yago"
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/danieleborsaro/yago/releases/download/v0.4.0/yago_0.4.0_Darwin_arm64.tar.gz"
-      sha256 "abf290b965e4f45644e3ed428a1b57d65556c75bbc92256f02599af85e33dbc3"
+      url "https://github.com/danieleborsaro/yago/releases/download/v0.4.1/yago_0.4.1_Darwin_arm64.tar.gz"
+      sha256 "d237f99222259a0e70f4b373bfc26ddd708100cc782983464cfb15c97d0d7ad5"
 
       define_method(:install) do
         bin.install "yago"
@@ -28,15 +28,15 @@ class Yago < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/danieleborsaro/yago/releases/download/v0.4.0/yago_0.4.0_Linux_x86_64.tar.gz"
-      sha256 "6b0e5cde42f3d01a37638b65d9c15b3f58d1ced8a8c741a344226ca442f39634"
+      url "https://github.com/danieleborsaro/yago/releases/download/v0.4.1/yago_0.4.1_Linux_x86_64.tar.gz"
+      sha256 "1326951d9de5d9c00c2b6226825f1f898ff62a5da8dfa8d2319ab88bf47b9a4e"
       define_method(:install) do
         bin.install "yago"
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/danieleborsaro/yago/releases/download/v0.4.0/yago_0.4.0_Linux_arm64.tar.gz"
-      sha256 "7174110c4eb7d19c6968455489abd9a725a2f1d3c1585031894dd83a6cfcfefb"
+      url "https://github.com/danieleborsaro/yago/releases/download/v0.4.1/yago_0.4.1_Linux_arm64.tar.gz"
+      sha256 "005d443e4e2f6871ff95f85942a1d6749f0a5d52f9f60d4684e54b7f0cd8f296"
       define_method(:install) do
         bin.install "yago"
       end
